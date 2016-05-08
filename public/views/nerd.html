@@ -5,3 +5,12 @@
 
     <p>{{ tagline }}</p>
 </div>
+
+<ul>
+	<li ng-repeat="n in nerds"> {{ n.name }} </li>
+</ul>
+
+<form ng-submit="addNew( nerd )"> 
+	<input ng-model="nerd.name" />
+	<button type="submit" class="btn btn-primary"> Add </button>
+</form>
