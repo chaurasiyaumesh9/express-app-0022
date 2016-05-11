@@ -7,7 +7,7 @@
 </div>
 
 <ul>
-	<li ng-repeat="n in nerds"> {{ n.name }} </li>
+	<li ng-repeat="n in nerds"> {{ n.name }} ( <a href="" ng-click="delete( n._id )"><span class="red">Delete</span></a> )</li>
 </ul>
 
 <form ng-submit="addNew( nerd )"> 

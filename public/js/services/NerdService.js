@@ -1,5 +1,5 @@
 // public/js/services/NerdService.js
-angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
+angular.module('sampleApp', []).factory('NerdService', ['$http', function($http) {
 
     return {
         // call to get all nerds

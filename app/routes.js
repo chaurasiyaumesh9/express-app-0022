@@ -23,13 +23,48 @@ var Nerd = require('./models/nerd');
             });
         });
 
+		app.post('/api/nerds', function(req, res) {
+			
+           if ( !req.body.nerdData )
+			{
+				return;
+			}
+
+			var nerd = req.body.nerdData ;	
+			var NewNerd = new Nerd( nerd );
+			
+			NewNerd.save(function(err, newNerd ) {
+				 if (err)
+                    res.send(err);
+				
+				res.json( newNerd );
+				
+			});
+        });
+
+		app.delete('/api/nerds/:id', function(req, res) {
+			console.log('req.params.id :',req.params.id);
+           if ( !req.params.id )
+			{
+				return;
+			}
+			Nerd.findByIdAndRemove( req.params.id, function(err) {
+				 if (err)
+				res.send(err);
+			
+				res.json( {} );
+			});		
+        });
+
+		
+
         // route to handle creating goes here (app.post)
         // route to handle delete goes here (app.delete)
 
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('*', function(req, res) {
-            res.sendfile('./public/views/index.html'); // load our public/index.html file
+            res.sendfile('./public/index.html'); // load our public/index.html file
         });
 
     };
